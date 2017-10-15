@@ -1,3 +1,5 @@
+require('dotenv').config({silent:true});
+
 var express = require('express');
 var ejsLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
@@ -22,6 +24,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
+  console.log("req.user", req.user);
+  // console.log("res.locals", res.locals);
   res.locals.alerts = req.flash();
   next();
 });
